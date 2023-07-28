@@ -1,4 +1,5 @@
 import { MediaServerType } from '@server/constants/server';
+import { removeOldMedia } from '@server/job/remove-old-media';
 import downloadTracker from '@server/lib/downloadtracker';
 import ImageProxy from '@server/lib/imageproxy';
 import { plexFullScanner, plexRecentScanner } from '@server/lib/scanners/plex';
@@ -214,6 +215,22 @@ export const startJobs = (): void => {
       // Clean TMDB image cache
       ImageProxy.clearCache('tmdb');
     }),
+  });
+
+  scheduledJobs.push({
+    id: 'remove-old-media',
+    name: 'Remove Old Media',
+    type: 'process',
+    interval: 'hours',
+    cronSchedule: jobs['remove-old-media'].schedule,
+    job: schedule.scheduleJob(jobs['remove-old-media'].schedule, () => {
+      logger.info('Starting scheduled job: Remove Old Media', {
+        label: 'Jobs',
+      });
+      removeOldMedia.run();
+    }),
+    running: () => removeOldMedia.status().running,
+    cancelFn: () => removeOldMedia.cancel(),
   });
 
   logger.info('Scheduled jobs loaded', { label: 'Jobs' });

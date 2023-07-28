@@ -266,7 +266,8 @@ export type JobId =
   | 'jellyfin-recently-added-scan'
   | 'jellyfin-full-scan'
   | 'image-cache-cleanup'
-  | 'availability-sync';
+  | 'availability-sync'
+  | 'remove-old-media';
 
 interface AllSettings {
   clientId: string;
@@ -454,6 +455,9 @@ class Settings {
         },
         'image-cache-cleanup': {
           schedule: '0 0 5 * * *',
+        },
+        'remove-old-media': {
+          schedule: '0 30 0 * * *',
         },
       },
     };
