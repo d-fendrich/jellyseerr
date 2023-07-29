@@ -230,7 +230,6 @@ export const startJobs = (): void => {
       removeOldMedia.run();
     }),
     running: () => removeOldMedia.status().running,
-    cancelFn: () => removeOldMedia.cancel(),
   });
 
   logger.info('Scheduled jobs loaded', { label: 'Jobs' });

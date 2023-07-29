@@ -282,6 +282,7 @@ interface AllSettings {
   public: PublicSettings;
   notifications: NotificationSettings;
   jobs: Record<JobId, JobSettings>;
+  removeOldMediaSpan: number;
 }
 
 const SETTINGS_PATH = process.env.CONFIG_DIRECTORY
@@ -457,9 +458,10 @@ class Settings {
           schedule: '0 0 5 * * *',
         },
         'remove-old-media': {
-          schedule: '0 30 0 * * *',
+          schedule: '0 31 3 * * *',
         },
       },
+      removeOldMediaSpan: 1000 * 60 * 60 * 24 * 60,
     };
     if (initialSettings) {
       this.data = merge(this.data, initialSettings);
@@ -590,6 +592,10 @@ class Settings {
     this.generateVapidKeys();
 
     return this.data.vapidPrivate;
+  }
+
+  get removeOldMediaSpan() {
+    return this.data.removeOldMediaSpan;
   }
 
   public regenerateApiKey(): MainSettings {

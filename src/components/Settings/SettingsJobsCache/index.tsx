@@ -63,6 +63,7 @@ const messages: { [messageName: string]: MessageDescriptor } = defineMessages({
   'download-sync': 'Download Sync',
   'download-sync-reset': 'Download Sync Reset',
   'image-cache-cleanup': 'Image Cache Cleanup',
+  'remove-old-media': 'Remove Old Media',
   editJobSchedule: 'Modify Job',
   jobScheduleEditSaved: 'Job edited successfully!',
   jobScheduleEditFailed: 'Something went wrong while saving the job.',

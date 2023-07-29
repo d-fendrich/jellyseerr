@@ -657,6 +657,7 @@
   "components.Settings.SettingsJobsCache.imagecachesize": "Gesamtgröße des Cache",
   "components.Settings.SettingsJobsCache.jellyfin-recently-added-scan": "Scan der zuletzt hinzugefügten Jellyfin Medien",
   "components.Settings.SettingsJobsCache.jellyfin-full-scan": "Vollständiger Jellyfin Bibliotheken Scan",
+  "components.Settings.SettingsJobsCache.remove-old-media": "Altmedien bereinigen",
   "components.Settings.SettingsJobsCache.jobScheduleEditFailed": "Beim Speichern des Auftrags ging etwas schief.",
   "components.Settings.SettingsJobsCache.jobScheduleEditSaved": "Auftrag erfolgreich bearbeitet!",
   "components.Settings.SettingsJobsCache.jobcancelled": "{jobname} abgebrochen.",
